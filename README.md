@@ -87,4 +87,7 @@ Bonus: I finally learn how to comment more than one line :D I am sooo happy.
 more than just
 one line '''
 ```
+As results:
+
+![image](https://github.com/Rafaelatff/tkinter-studies/assets/58916022/b885c5cf-fd25-4718-a964-c2d457ce9277)
 
