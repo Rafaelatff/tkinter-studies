@@ -27,6 +27,14 @@ window.mainloop() # method to display the window until you manually close it
 * grid(): It organizes the widgets in a table-like structure. 
 * place(): Its purpose is to place the widgets at a specific position as instructed by the user in the parent widget.
 
+I can, optionaly create the main window using only ```window = Tk()``` instead of ```window = tkinter.Tk()```. But for that I need to use ```from tkinter import *```.
+
+```py
+from tkinter import *
+window = Tk()
+```
+
+Note: If I do the second way, later I need to call others import such as ```import tkinter.filedialog```.
 
 Results:
 
@@ -57,5 +65,26 @@ As results:
 
 ![image](https://github.com/Rafaelatff/tkinter-studies/assets/58916022/b5cbebe7-e6d4-4358-b755-4932fdb13661)
 
+## Now let's focus on our project!
 
+First I will add a feature, that when the user tries to close the window, a new window opens asking if he is sure about his decision. For that, we need to use the [wm_protocol](https://web.archive.org/web/20200731093951id_/http://effbot.org/tkinterbook/wm.htm#Tkinter.Wm.protocol-method) method of the toplevel window. Specifically, we are interested in the WM_DELETE_WINDOW protocol. Using that method, it allows us to register a callback which is called when the window is being destroyed.
+
+For that I need to add a few lines to our code:
+
+```py
+import tkinter.messagebox as tkMessageBox
+
+### defs at the begin of the code ###
+def callback():
+    if tkMessageBox.askokcancel("Sair", "Tem certeza que deseja sair?"):
+        window.destroy()
+```
+
+Bonus: I finally learn how to comment more than one line :D I am sooo happy.
+
+```py
+''' this coments
+more than just
+one line '''
+```
 
