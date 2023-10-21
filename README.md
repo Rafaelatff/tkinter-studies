@@ -72,12 +72,21 @@ First I will add a feature, that when the user tries to close the window, a new 
 For that I need to add a few lines to our code:
 
 ```py
+##### AT THE BEGIN OF THE CODE #####
+
 import tkinter.messagebox as tkMessageBox
 
 ### defs at the begin of the code ###
 def callback():
     if tkMessageBox.askokcancel("Sair", "Tem certeza que deseja sair?"):
         window.destroy()
+
+##### AT THE BOTTON OF THE CODE #####
+
+# Mainloop method
+window.protocol("WM_DELETE_WINDOW", callback)
+window.mainloop() # method to display the window until you manually close it
+
 ```
 
 Bonus: I finally learn how to comment more than one line :D I am sooo happy.
