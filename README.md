@@ -100,3 +100,63 @@ As results:
 
 ![image](https://github.com/Rafaelatff/tkinter-studies/assets/58916022/b885c5cf-fd25-4718-a964-c2d457ce9277)
 
+## Entry value
+
+Let's create a box, so user can entry a value to a variable. In our case it will be our variable for the window size of the [running statistics](https://github.com/Rafaelatff/Running-statistics).
+
+First we are going to create a small text to assist the user:
+
+```py
+# Create text to assist user 
+text = tk.Label(bottom_frame, text = "Tamanho da janela:")
+text.place(x=110,y=263)
+```
+Then we are going to create a Entry space, where user can add a value. We will set the position and value. In our case we add 5 and "5".
+
+```py
+# Create box to receive value
+window_size = tk.Entry(bottom_frame, width=10)
+window_size.place(x=230,y=264)
+window_size.insert(5, "5")
+```
+Just by typing a value in the Entry box, the variable won't be modified. We need a button to make the action of sendind the value to the variable. First we are going to create the button, as showed in next code lines:
+
+```py
+# Create button to save value to the variable
+b_save_value = tk.Button(bottom_frame,text="GRAVAR", width=10, command = save_value)
+b_save_value.place(x=300, y=260)
+b_save_value.config(state="normal")
+```
+An error is pressented at this point, because we call the ```command = save_value``` but we didn't create the function. Let's to that! At the begin of the code we add the following function:
+
+```py
+def save_value():
+    entry = window_size.get() # Takes string fist
+    window_size_N = int(entry) # Then convert str to int
+    print(window_size_N)
+    if window_size_N <= 1:
+        print('Window size cannont be lesser than 2')
+    elif window_size_N > 101: #elif = else if
+        print('Window size cannont be greater than 101')
+    else:
+        print('Running statistcs considering window size of: ', window_size_N)
+```
+
+To take the value from the Entry box, we use the .get() methode. It recovers a string value. Then we use the int() to get the int value from the string.
+
+Note: We changed the window size to 1000x300 and set ```window.resizable(0,0)```, so user can't resize window.
+
+As results:
+
+![image](https://github.com/Rafaelatff/tkinter-studies/assets/58916022/dc1ad82e-d2bd-46cb-963e-26b5d498bb72)
+
+## Graphic
+
+## Save graphic button
+
+
+
+
+
+
+
