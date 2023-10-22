@@ -152,6 +152,50 @@ As results:
 
 ## Graphic
 
+For the tkinter imports, we add the **FigureCanvasTkAgg**, that is used to integrate tkinter and matplotlib.
+
+```py
+# To import integration features (between tkinter and matplotlib)
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg # used to integrate tkinter and matplotlib
+```
+
+We also added all the imports for the matplotlib that is needed for the running statistics. We added a white figure where we are going to place the graphic. Also, this figure will be used on the next step.
+
+```py
+fig = Figure(figsize=(9.8, 2.5), facecolor='white') 
+# Figure: Area to plot the mathplot graph
+# figsize=(x,y) in units, facecolor='white' to make background of the figure white
+```
+Then we use the FigureCanvasTkAgg object and use the previous created figure as argument. Then we call the ```.get_tk_widget()``` and ```.pack()``` it in.
+Last line call the ```graph``` function and send the figure and canvas that we just created.
+
+```py
+canvas = FigureCanvasTkAgg(fig, master = top_frame)
+canvas.get_tk_widget().pack()#row=3, column=1, columnspan=3, sticky='NSEW')
+graph(fig,canvas)   
+```
+
+I won't copy the running statics calcs for the plot here. Only the main and necessary codes to show it to the GUI. I also deleted all the ```print()``` statements, once it was requiring too much processing time. Some ```plt``` code were commented, and the plots were treated by using th ```ax``` variable. We also set a initial value for the window size and used the ```.clear()``` methode to the figure, so the figure has its X and Y labels erased every data read (those labels aren't fixed and change place once data is arriving). To plot, we use the ```canvas.draw()``` methode. To keep receiving the values and updating the plot on the GUI, we finish by calling the funcion after 1000 mili seconds, by calling ```.after()```.
+
+```py
+def graph(f,c):
+    window_size_N = 5 # Set a initial value
+    f.clear()
+
+## Running statistics code here ##
+
+    #plt.figure(1)
+    ax = f.add_subplot()
+    ax.plot(std_deviation_running, label='Running statistics')     # plt.plot(std_deviation_running) 
+    ax.set_xlabel('Time domain') # plt.xlabel('Time domain')
+    ax.set_ylabel('Standard deviation') #plt.ylabel('Standard deviation')
+    canvas.draw() # instead of plt.show()
+    
+    file.close()
+    window.after(1000, graph,f,c) # Call function again after 1000 mili seconds.
+
+```
+
 ## Save graphic button
 
 
