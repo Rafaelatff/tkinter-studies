@@ -193,13 +193,39 @@ def graph(f,c):
     
     file.close()
     window.after(1000, graph,f,c) # Call function again after 1000 mili seconds.
-
 ```
+As results:
+
+![image](https://github.com/Rafaelatff/tkinter-studies/assets/58916022/54fbe22e-665e-4838-9747-b96165e9cb0e)
 
 ## Save graphic button
 
+We create a button and set te command ```save``` to it.
 
+```py
+b_save_image = tk.Button(bottom_frame, text='Salvar Gráfico', command=lambda:save(fig))
+b_save_image.place(x=760,y=260)
+```
+Then, we import the ```asksaveasfilename``` from the ```tkinter.filedialog``` and create the function save at the begin of the code. 
 
+```py
+from tkinter.filedialog import asksaveasfilename
+
+def save(ff):
+        ftypes = [('.png (PNG)', '*.png')]
+        f = asksaveasfilename(filetypes=ftypes, defaultextension=".png")
+
+        print(f)
+
+        if f != '':
+            ff.savefig(f)
+```
+
+As results: 
+
+https://github.com/Rafaelatff/tkinter-studies/assets/58916022/9191bb02-4287-4c9d-9170-e112d75d7d1a
+
+## Changing from ```.pack()``` to ```.grid()```
 
 
 
