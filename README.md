@@ -227,6 +227,20 @@ https://github.com/Rafaelatff/tkinter-studies/assets/58916022/9191bb02-4287-4c9d
 
 ## Changing from ```.pack()``` to ```.grid()```
 
+Well, I changed the ```.pack()``` to ```.grid()```, but what makes my GUI looks nice was:
 
+```py
+    f.subplots_adjust(left=0.05, bottom=0.2, right=0.98, top=0.95, wspace=None, hspace=None)
+```
+This way I set the space for the plot. Just add this line before ```canvas.draw()``` with the right settings and the plot looks fine.
 
+Then, to have the real **grid** behinde the plot, or what could also be called **rule**, this was set by only adding the line:
+
+```py
+plt.style.use("ggplot")
+```
+
+Then as results:
+
+![image](https://github.com/Rafaelatff/tkinter-studies/assets/58916022/0c6fd015-8298-4550-9dbc-9be12ba751a6)
 
